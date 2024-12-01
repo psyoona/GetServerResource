@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using GetServerResource;
+
+ResourceCollector resourceCollector = new ResourceCollector(); 
+
+Console.WriteLine("=== CPU Information ===");
+resourceCollector.GetCpuUsage();
+
+Console.WriteLine("\n=== Memory Information ===");
+resourceCollector.GetMemoryInfo();
+
+Console.WriteLine("\n=== Disk Information ===");
+resourceCollector.GetDiskInfo();
