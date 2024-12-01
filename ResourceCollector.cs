@@ -15,6 +15,13 @@ namespace GetServerResource
 				Console.WriteLine($"Cores: {managementObject["NumberOfCores"]}");
 				Console.WriteLine($"Logical Processors: {managementObject["NumberOfLogicalProcessors"]}");
 			}
+
+			using (PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"))
+			{
+				_ = cpuCounter.NextValue();
+				Thread.Sleep(1000); // 1초 대기
+				Console.WriteLine($"Current CPU Usage: {cpuCounter.NextValue():F2}%");
+			}
 		}
 
 		public void GetMemoryInfo()
